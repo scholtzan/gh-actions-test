@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: webfactory/ssh-agent
-      uses: webfactory/ssh-agent@v0.5.3
+      uses: webfactory/ssh-agent@v0.5.1
       with:
           ssh-private-key: ${{ secrets.GH_ACTION_SSH_KEY }}
     - name: push-upstream
