@@ -14,21 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - actions/checkout@v2
-        - uses: webfactory/ssh-agent@v0.5.3
-          with:
-              ssh-private-key: ${{ secrets.GH_ACTION_SSH_KEY }}
-        - name: push-upstream
-          with:
-          run: |
-            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-            git config --global user.name "Github Action"
-            git config --global user.email "gh-action+bigquery-etl@mozilla.com"
+    - name: webfactory/ssh-agent
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+          ssh-private-key: ${{ secrets.GH_ACTION_SSH_KEY }}
+    - name: push-upstream
+      with:
+      run: |
+        ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        git config --global user.name "Github Action"
+        git config --global user.email "gh-action+bigquery-etl@mozilla.com"
 
-            GPF_INSTALL_LOCATION=/usr/local/bin/git-push-fork-to-upstream-branch
-            GPF_URL=https://raw.githubusercontent.com/jklukas/git-push-fork-to-upstream-branch/master/git-push-fork-to-upstream-branch
-            curl -sL $GPF_URL > $GPF_INSTALL_LOCATION
-            chmod 755 $GPF_INSTALL_LOCATION
-            export GPF_USE_SSH=true
+        GPF_INSTALL_LOCATION=/usr/local/bin/git-push-fork-to-upstream-branch
+        GPF_URL=https://raw.githubusercontent.com/jklukas/git-push-fork-to-upstream-branch/master/git-push-fork-to-upstream-branch
+        curl -sL $GPF_URL > $GPF_INSTALL_LOCATION
+        chmod 755 $GPF_INSTALL_LOCATION
+        export GPF_USE_SSH=true
 
-            git-push-fork-to-upstream-branch upstream ${{ github.event.inputs.name }}
+        git-push-fork-to-upstream-branch upstream ${{ github.event.inputs.name }}
