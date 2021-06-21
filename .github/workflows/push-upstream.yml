@@ -27,9 +27,8 @@ jobs:
         mkdir bin
         GPF_INSTALL_LOCATION=bin/git-push-fork-to-upstream-branch
         GPF_URL=https://raw.githubusercontent.com/jklukas/git-push-fork-to-upstream-branch/master/git-push-fork-to-upstream-branch
-        echo "fff"
         sudo curl -sL $GPF_URL > $GPF_INSTALL_LOCATION
         chmod 755 $GPF_INSTALL_LOCATION
         export GPF_USE_SSH=true
 
-        bin/git-push-fork-to-upstream-branch upstream ${{ github.event.inputs.name }}
+        bin/git-push-fork-to-upstream-branch git@github.com:scholtzan/gh-actions-test.git ${{ github.event.inputs.name }}
