@@ -24,13 +24,13 @@ jobs:
         git config --global user.name "Github Action"
         git config --global user.email "gh-action+bigquery-etl@mozilla.com"
 
-        echo "fff"
-
         GPF_INSTALL_LOCATION=/usr/local/bin/git-push-fork-to-upstream-branch
         GPF_URL=https://raw.githubusercontent.com/jklukas/git-push-fork-to-upstream-branch/master/git-push-fork-to-upstream-branch
         curl -sL $GPF_URL > $GPF_INSTALL_LOCATION
         chmod 755 $GPF_INSTALL_LOCATION
         export GPF_USE_SSH=true
 
+        echo "fff"
+
         sudo git-push-fork-to-upstream-branch
-        git-push-fork-to-upstream-branch upstream ${{ github.event.inputs.name }}
+        sudo git-push-fork-to-upstream-branch upstream ${{ github.event.inputs.name }}
