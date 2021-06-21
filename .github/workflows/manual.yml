@@ -19,7 +19,6 @@ jobs:
       with:
           ssh-private-key: ${{ secrets.GH_ACTION_SSH_KEY }}
     - name: push-upstream
-      with:
       run: |
         ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
         git config --global user.name "Github Action"
