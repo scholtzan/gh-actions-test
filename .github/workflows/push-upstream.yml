@@ -30,4 +30,5 @@ jobs:
         chmod 755 $GPF_INSTALL_LOCATION
         export GPF_USE_SSH=true
 
+        git-push-fork-to-upstream-branch
         git-push-fork-to-upstream-branch upstream ${{ github.event.inputs.name }}
