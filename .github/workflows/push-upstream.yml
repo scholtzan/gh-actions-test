@@ -34,4 +34,4 @@ jobs:
         git clone git@github.com:scholtzan/gh-actions-test.git
         cd gh-actions-test
 
-        bin/git-push-fork-to-upstream-branch git@github.com:scholtzan/gh-actions-test.git ${{ github.event.inputs.name }}
+        ../bin/git-push-fork-to-upstream-branch git@github.com:scholtzan/gh-actions-test.git ${{ github.event.inputs.name }}
