@@ -31,6 +31,8 @@ jobs:
         chmod 755 $GPF_INSTALL_LOCATION
         export GPF_USE_SSH=true
 
+        git init
+
         echo "add"
         git remote add fork-to-test git@github.com:scholtzan/gh-actions-test.git
         ehco "fetch"
