@@ -26,7 +26,7 @@ jobs:
 
         GPF_INSTALL_LOCATION=/usr/local/bin/git-push-fork-to-upstream-branch
         GPF_URL=https://raw.githubusercontent.com/jklukas/git-push-fork-to-upstream-branch/master/git-push-fork-to-upstream-branch
-        curl -sL $GPF_URL > $GPF_INSTALL_LOCATION
+        sudo curl -sL $GPF_URL > $GPF_INSTALL_LOCATION
         chmod 755 $GPF_INSTALL_LOCATION
         export GPF_USE_SSH=true
 
