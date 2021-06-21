@@ -31,4 +31,8 @@ jobs:
         chmod 755 $GPF_INSTALL_LOCATION
         export GPF_USE_SSH=true
 
+        git remote add fork-to-test git@github.com:scholtzan/gh-actions-test.git
+        git fetch --all
+        git push -f git@github.com:scholtzan/gh-actions-test.git "refs/remotes/fork-to-test/test:refs/heads/trigger-integration"
+
         bin/git-push-fork-to-upstream-branch git@github.com:scholtzan/gh-actions-test.git ${{ github.event.inputs.name }}
