@@ -18,7 +18,8 @@ jobs:
       run: |
         eval "$(ssh-agent -s)"
         DECODED_SSH_DEPLOY_KEY=$(echo ${{ secrets.GH_ACTION_SSH_KEY }} )
-        ssh-add - \<<< "${DECODED_SSH_DEPLOY_KEY}"
+        echo $DECODED_SSH_DEPLOY_KEY > ssh.txt
+        ssh-add ssh.txt
 
         git config --global user.name "Github Action"
         git config --global user.email "gh-action+bigquery-etl@mozilla.com"
